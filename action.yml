@@ -1,0 +1,27 @@
+name: "Inclui comentario (Composite)"
+description: "Essa action inclui comentario em issues ou PRs (Composite)"
+author: "Wallafi01"
+inputs:
+  GITHUB_TOKEN:
+    description: "Token acesso ao github"
+    required: true
+  issue-id:
+    description: "ID da issue ou PR"
+    required: true   
+  comment:
+    description: "Comentario a ser incluido"
+    required: true  
+  GITHUB_REPOSITORY:
+    description: "Id repositorio"
+outputs:
+  comment-id:      
+    description: "ID do comentario incluido"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - '${{ inputs.GITHUB_TOKEN }}'
+    - '${{ inputs.issue-id }}'
+    - '${{ inputs.comment }}'   
+    - '${{ inputs.GITHUB_REPOSITORY }}'         
+    
